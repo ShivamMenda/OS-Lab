@@ -1,0 +1,5 @@
+For Scheduling
+TAT=CT-AT 
+WT=TAT-BT
+RT=WT(For Non Premptive)
+Thoroughput= Total no of processes/Total completion time of all processes
