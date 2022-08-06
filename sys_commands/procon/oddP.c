@@ -45,7 +45,7 @@ int main(int argc,char *argv[]){
     ptr = shmat(shm_fd,NULL,0666);
     printf("\nParent is printing:\n");
     printf("%s",(char *)ptr);
-    shm_unlink("OS1");
+    shmdt(ptr);
   }
   return 0;
 }

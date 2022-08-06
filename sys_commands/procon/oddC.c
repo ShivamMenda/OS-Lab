@@ -30,8 +30,8 @@ int main(int argc,char *argv[]){
 
 //OUTPUT
 // cc oddP.c       
-// shivam@192 procon % cc oddC.c -o odd
-// shivam@192 procon % ./a.out 5       
+// cc oddC.c -o odd
+// ./a.out 5       
 // child:
 // 1  3  5  7  9  
 // Parent: Child completed
