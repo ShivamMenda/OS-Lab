@@ -76,6 +76,7 @@ int main()
             sum_rt += ps[max_index].rt;
             completed++;
             is_completed[max_index]=true;
+            printf("| P%d  %d",ps[max_index].pid,current_time);
             is_first_process = false; 
         
             

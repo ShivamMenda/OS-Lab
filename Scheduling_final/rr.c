@@ -92,6 +92,7 @@ int main()
         {    
             ps[index].bt_remaining -= tq;
             current_time += tq;
+            printf("| P%d  %d",ps[index].pid,current_time);
         }
 
         else 
@@ -104,7 +105,7 @@ int main()
             ps[index].tat = ps[index].ct - ps[index].at;
             ps[index].wt = ps[index].tat - ps[index].bt;
             ps[index].rt = ps[index].start_time - ps[index].at;
-
+            printf("| P%d  %d",ps[index].pid,current_time);
             sum_tat += ps[index].tat;
             sum_wt += ps[index].wt;
             sum_rt += ps[index].rt;    

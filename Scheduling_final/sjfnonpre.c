@@ -73,7 +73,8 @@ int main()
         completed++;
         is_completed[min_index]=true;
         current_time = ps[min_index].ct;
-        is_first_process = false;  
+        is_first_process = false; 
+        printf("| P%d  %d",ps[min_index].pid,current_time);
         }
     }
     

@@ -73,6 +73,7 @@ int main()
 
        bt_remaining[max_index]--;
        current_time++;
+       printf("| P%d  %d",ps[min_index].pid,current_time);
        
        if(bt_remaining[max_index]==0)
        {

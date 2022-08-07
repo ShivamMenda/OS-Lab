@@ -76,7 +76,7 @@ int main()
         ps[i].tat=ps[i].ct-ps[i].at;
         ps[i].wt=ps[i].tat-ps[i].bt;
         ps[i].rt=ps[i].wt;
-
+        printf("| P%d  %d",ps[i].pid,ps[i].ct);
         sum_tat+=ps[i].tat;
         sum_wt+=ps[i].wt;
         sum_rt+=ps[i].rt;
@@ -84,7 +84,7 @@ int main()
     
     qsort((void *)ps,n,sizeof(struct process),comparatorPID);
     
-    printf("PID\tAT\tBT\tCT\tTAT\tWT\n");
+    printf("\nPID\tAT\tBT\tCT\tTAT\tWT\n");
 
     for(int i=0;i<n;i++)
     {
