@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<stdbool.h>
 #include<limits.h>
 
 struct process_struct
@@ -14,7 +13,7 @@ int main()
 {
     
     int n;
-    bool is_completed[100]={false},is_first_process=true;
+    bool is_completed[100]={0},is_first_process=1;
     int bt_remaining[100];
     int current_time = 0;
     int completed = 0;
@@ -43,7 +42,7 @@ int main()
         int minimum=INT_MAX;
         for (int i = 0; i < n; i++)
         {
-            if (ps[i].at<=current_time && is_completed[i]== false)
+            if (ps[i].at<=current_time && is_completed[i]== 0)
             {
                 if (bt_remaining[i]<minimum)
                 {
@@ -74,7 +73,7 @@ int main()
             if (bt_remaining[min_index]==ps[min_index].bt)
             {
                 ps[min_index].start_time = current_time;
-                is_first_process=false;
+                is_first_process=0;
             }
             bt_remaining[min_index] -= 1;
             current_time++; 
@@ -92,8 +91,8 @@ int main()
                 sum_wt += ps[min_index].wt;
                 sum_rt += ps[min_index].rt;
                 completed++;
-                is_completed[min_index]=true;
-                // current_time=ps[min_index].ct;
+                is_completed[min_index]=1;
+                current_time=ps[min_index].ct;
             }
         }
     }
