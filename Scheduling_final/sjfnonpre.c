@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<stdbool.h>
 #include<limits.h>
 
 struct process_struct
@@ -14,12 +13,12 @@ int main()
 {
     
     int n;
-    bool is_completed[100]={false},is_first_process=true;
+    bool is_completed[100]={0},is_first_process=1;
     int current_time = 0;
     int completed = 0;
     printf("Enter total number of processes: ");
     scanf("%d",&n);    
-    int sum_tat=0,sum_wt=0,sum_rt=0,total_idle_time=0,prev=0,length_cycle;
+    int sum_tat=0,sum_wt=0,sum_rt=0;
 
     for(int i=0;i<n;i++)
     {
@@ -40,7 +39,7 @@ int main()
         int min_index = -1;
         int minimum = INT_MAX;
         for(int i = 0; i < n; i++) {
-            if(ps[i].at <= current_time && is_completed[i] == false) {
+            if(ps[i].at <= current_time && is_completed[i] == 0) {
                 if(ps[i].bt < minimum) {
                     minimum = ps[i].bt;
                     min_index = i;
@@ -71,9 +70,9 @@ int main()
         sum_rt += ps[min_index].rt;
         
         completed++;
-        is_completed[min_index]=true;
+        is_completed[min_index]=1;
         current_time = ps[min_index].ct;
-        is_first_process = false; 
+        is_first_process = 0; 
         printf("| P%d  %d",ps[min_index].pid,current_time);
         }
     }
