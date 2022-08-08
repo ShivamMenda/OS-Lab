@@ -78,9 +78,7 @@ int main()
             }
             bt_remaining[min_index] -= 1;
             current_time++; 
-            printf("\n----------\n");
             printf("| P%d  %d",ps[min_index].pid,current_time);
-            printf("\n----------\n");
 
             if(bt_remaining[min_index] == 0)
             {
