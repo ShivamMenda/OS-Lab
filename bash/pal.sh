@@ -3,7 +3,7 @@
 echo "Enter the string to check it's palindrome or not"
 read str1
 length=${#str1}
-for((i=$length-1;i>=0;i--))
+for ((i=$length-1;i>=0;i--))
 do
 	str2="$str2${str1:$i:1}"
 done

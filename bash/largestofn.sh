@@ -3,10 +3,11 @@ declare -a arr
 
 read -p "Enter n>> " n
 
+echo "Enter numbers one by one"
+
 for (( i=0; i<n; i++ ))
 do
-	read -p "" num
-	arr[$i]=$num
+	read arr[$i]
 done
 
 big=${arr[0]}
