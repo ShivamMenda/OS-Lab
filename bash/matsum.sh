@@ -1,59 +1,67 @@
 #!/bin/bash
+echo -n "enter number of rows:"
+read m
+echo -n "enter number of columns:"
+read n
+echo "enter elements of matrix A:"
+for((i=1;i<=$m;i++))
+do
+for((j=1;j<=$n;j++))
+do
+echo -n "enter element ($i,$j):"
+read arr1[$i$j]
+done
+done
 
-m=3
-n=3
-declare -a X
-declare -a Y
-declare -a Z
-echo "Enter the elements of the first 3*3 matrix>>"
-for((i=0;i<3;i++))
-do 
-	for((j=0;j<3;j++))
-	do
-		read X[$i,$j]
-	done
-done
-echo
-echo "Enter the elements of the second 3*3 matrix>>"
-for((i=0;i<3;i++))
-do 
-	for((j=0;j<3;j++))
-	do
-		read Y[$i,$j]
-	done
-done
-echo
 
-echo "The first matrix is>>"
-for((i=0;i<3;i++))
-do 
-	for((j=0;j<3;j++))
-	do
-		echo  -ne "${X[$i,$j]}"
-	done
-	echo
+echo enter elements of matrix B:
+for((i=1;i<=$m;i++))
+do
+for((j=1;j<=$n;j++))
+do
+echo -n "enter element ($i,$j):"
+read arr2[$i$j]
 done
-echo
+done
 
-echo "The second matrix is>>"
-for((i=0;i<3;i++))
-do 
-	for((j=0;j<3;j++))
-	do
-		echo  -ne "${Y[$i,$j]}"
-	done
-	echo
-done
-echo
 
-echo "The sum of matrix one and two is>>"
-for((i=0;i<3;i++))
-do 
-	for((j=0;j<3;j++))
-	do
-		Z[$i,$j]=$((${X[$i,$j]}+${Y[$i,$j]}))
-		echo  -ne "${Z[$i,$j]}"
-	done
-	echo
+echo elements of matrix A:
+for((i=1;i<=$m;i++))
+do
+for((j=1;j<=$n;j++))
+do
+echo -ne ${arr1[$i$j]}
 done
-echo
+echo ""
+done
+
+
+echo elements of matrix B:
+for((i=1;i<=$m;i++))
+do
+for((j=1;j<=$n;j++))
+do
+echo -ne ${arr2[$i$j]}
+done
+echo ""
+done
+
+
+for((i=1;i<=$m;i++))
+do
+for((j=1;j<=$n;j++))
+do
+arr3[$i$j]=`expr ${arr1[$i$j]} + ${arr2[$i$j]}`
+done
+done
+
+
+echo After addition the matrix is:
+for((i=1;i<=$m;i++))
+do
+for((j=1;j<=$n;j++))
+do
+echo -ne ${arr3[$i$j]}
+done
+echo " "
+done

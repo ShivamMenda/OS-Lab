@@ -1,31 +1,25 @@
 #!/bin/bash
 
-read -p "Enter starting number>>" num1
-echo 
-read -p "Enter ending number>>" num2
+read -p "Enter start (2-X): " start
+read -p "Enter end (2-X): " end
 
-while [ $num1 -lt $num2 ]
+if [ $start -gt 1 ]
+then
+for ((i=$start;i<=$end;i++))
+do
+	flag=0
+	for ((j=2;j<$i;j++))
 	do
-		flag=0
-		num3=2
-		if [ $num1 -gt 1 ]
+		if [ $(( $i%$j )) -eq 0 ]
 		then
-			while [ $num3 -lt $num1 ]
-				do
-					#((j=$num1%$num3))
- 					if [ $(($num1%$num3)) -eq 0 ]
-					then
-						flag=1
-						break
-					else
-						((num3++))
-					fi
-				done
-			if [ $flag -eq 0 ]
-			then 
-				echo $num1
-			fi
+			flag=1
 		fi
-		((num1++))
-		
 	done
+	if [ $flag -eq 0 ]
+	then
+		echo "$i "
+	fi
+done
+else
+	echo "Invalid Input"
+fi
