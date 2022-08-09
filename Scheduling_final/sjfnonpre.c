@@ -6,14 +6,14 @@ struct process_struct
   int pid;
   int at;
   int bt;
-  int ct,wt,tat,rt,start_time;
+  int ct,wt,tat,rt;
 }ps[100];
 
 int main()
 {
     
     int n;
-    bool is_completed[100]={0},is_first_process=1;
+    int is_completed[100]={0},is_first_process=1;
     int current_time = 0;
     int completed = 0;
     printf("Enter total number of processes: ");
@@ -59,8 +59,8 @@ int main()
         }
         else
         {
-        ps[min_index].start_time = current_time;
-        ps[min_index].ct = ps[min_index].start_time + ps[min_index].bt;
+        current_time+=ps[min_index].bt;
+        ps[min_index].ct = current_time;
         ps[min_index].tat = ps[min_index].ct - ps[min_index].at;
         ps[min_index].wt = ps[min_index].tat - ps[min_index].bt;
         ps[min_index].rt = ps[min_index].wt;

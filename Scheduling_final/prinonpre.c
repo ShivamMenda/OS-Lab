@@ -8,7 +8,7 @@ struct process_struct
   int at;
   int bt;
   int priority;
-  int ct,wt,tat,rt,start_time;
+  int ct,wt,tat,rt;
 }ps[100];
 
 int main()
@@ -44,10 +44,10 @@ int main()
     {
         //find process with min. burst time in ready queue at current time
         int max_index = -1;
-        int maximum = -1;
+        int maximum = 999;
         for(int i = 0; i < n; i++) {
             if(ps[i].at <= current_time && is_completed[i] == 0) {
-                if(ps[i].priority > maximum) {
+                if(ps[i].priority < maximum) {
                     maximum = ps[i].priority;
                     max_index = i;
                 }
@@ -65,8 +65,8 @@ int main()
         }
         else
         {
-            ps[max_index].start_time = current_time;
-            ps[max_index].ct = ps[max_index].start_time + ps[max_index].bt;
+            current_time+=ps[max_index].bt;
+            ps[max_index].ct = current_time;
             ps[max_index].tat = ps[max_index].ct - ps[max_index].at;
             ps[max_index].wt= ps[max_index].tat - ps[max_index].bt;
             ps[max_index].rt = ps[max_index].wt;
@@ -84,7 +84,7 @@ int main()
     }
     printf("\nProcess No.\tPriority\tAT\tCPU Burst Time\tCT\tTAT\tWT\tRT\n");
     for(int i=0;i<n;i++)
-     printf("%d\t%d\t\t%d\t%d\t\t%d\t%d\t%d\t%d\n",ps[i].pid,ps[i].priority,ps[i].at,ps[i].bt,ps[i].ct,ps[i].tat,ps[i].wt,ps[i].rt);
+     printf("%d\t%d\t%d\t%d\t\t%d\t%d\t%d\t%d\n",ps[i].pid,ps[i].priority,ps[i].at,ps[i].bt,ps[i].ct,ps[i].tat,ps[i].wt,ps[i].rt);
 
     printf("\n");    
     

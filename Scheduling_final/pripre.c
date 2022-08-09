@@ -45,10 +45,10 @@ int main()
     {
         //find process with min. burst time in ready queue at current time
         int max_index = -1;
-        int maximum = -1;
+        int maximum = 999;
         for(int i = 0; i < n; i++) {
             if(ps[i].at <= current_time && is_completed[i] == 0) {
-                if(ps[i].priority > maximum) {
+                if(ps[i].priority < maximum) {
                     maximum = ps[i].priority;
                     max_index = i;
                 }
@@ -73,12 +73,11 @@ int main()
 
        bt_remaining[max_index]--;
        current_time++;
-       printf("| P%d  %d",ps[min_index].pid,current_time);
+       printf("| P%d  %d",ps[max_index].pid,current_time);
        
        if(bt_remaining[max_index]==0)
        {
-            ps[max_index].start_time = current_time;
-            ps[max_index].ct = ps[max_index].start_time + ps[max_index].bt;
+            ps[max_index].ct = current_time;
             ps[max_index].tat = ps[max_index].ct - ps[max_index].at;
             ps[max_index].wt= ps[max_index].tat - ps[max_index].bt;
             ps[max_index].rt = ps[max_index].start_time - ps[max_index].at;
@@ -90,13 +89,12 @@ int main()
             completed++;
             is_completed[max_index]=true;
             
-            printf("Max=%d ", ps[max_index].ct);
        }
     }
   }
-  printf("\nProcess No.\tPriority\tAT\tCPU Burst Time\tCT\tTAT\tWT\tRT\n");
+  printf("\nPid\tPriority\tAT\tBurst Time\tCT\tTAT\tWT\tRT\n");
     for(int i=0;i<n;i++)
-     printf("%d\t%d\t%d\t%d\t\t%d\t%d\t%d\t%d\n",ps[i].pid,ps[i].priority,ps[i].at,ps[i].bt,ps[i].ct,ps[i].tat,ps[i].wt,ps[i].rt);
+     printf("%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\n",ps[i].pid,ps[i].priority,ps[i].at,ps[i].bt,ps[i].ct,ps[i].tat,ps[i].wt,ps[i].rt);
 
     printf("\n");    
     
