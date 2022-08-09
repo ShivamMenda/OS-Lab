@@ -7,7 +7,6 @@
 int main() 
 {
 pid_t child_pid,my_pid,parent_pid,wid;
-int i = 10;
 child_pid = fork();
 if (child_pid < 0) 
 {
@@ -24,7 +23,6 @@ if (child_pid == 0)
   parent_pid = getppid();
   printf("[CHILD] My pid is %d\n", my_pid);
   printf("[CHILD] My parent's pid is %d\n", parent_pid);
-  printf("[CHILD] i= %d\n",--i);
   printf("[CHILD] Child process going to load another program using execlp syscall\n");
   //execlp("/bin/pwd", "pwd", NULL);
   execlp("./ex","ex",NULL);
@@ -41,7 +39,6 @@ else
   printf("[PARENT] Resuming after the termination of %d\n", wid);
   printf("[PARENT] My parent's pid is %d\n", parent_pid);
   printf("[PARENT] My child's pid is %d\n", child_pid);
-   printf("[PARENT] i= %d\n",++i);
 }
 return 0;
 }
