@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<limits.h>
-#include<stdbool.h>  //for bool datatype
 #include <stdlib.h> //for qsort
 
 struct process_struct
@@ -43,7 +42,7 @@ int main()
     int n,index;
     //queue<int> q;
    
-    bool visited[100]={false},is_first_process=true;
+    int visited[100]={0},is_first_process=1;
     int current_time = 0;
     int completed = 0,tq;
     printf("Enter total number of processes: ");
@@ -73,7 +72,7 @@ int main()
    // q.push(0); 
     front=rear=0;
     queue[rear]=0;    
-    visited[0] = true;
+    visited[0] = 1;
 
     while(completed != n) 
     {
@@ -85,7 +84,7 @@ int main()
         {
             ps[index].start_time = findmax(current_time,ps[index].at);
             current_time =  ps[index].start_time;
-            is_first_process = false;    
+            is_first_process = 0;    
         }
 
         if(ps[index].bt_remaining-tq > 0)
@@ -113,11 +112,11 @@ int main()
         //check which new Processes needs to be pushed to Ready Queue from Input list
         for(int i = 1; i < n; i++) 
         {
-          if(ps[i].bt_remaining > 0 && ps[i].at <= current_time && visited[i] == false) 
+          if(ps[i].bt_remaining > 0 && ps[i].at <= current_time && visited[i] == 0) 
           {
             //q.push(i);
             queue[++rear]=i;
-            visited[i] = true;
+            visited[i] = 1;
           }
         }
          //check if Process on CPU needs to be pushed to Ready Queue
@@ -135,7 +134,7 @@ int main()
             if(ps[i].bt_remaining > 0)
             {
               queue[rear++]=i;
-              visited[i] = true;
+              visited[i] = 1;
               break;
             }
           }

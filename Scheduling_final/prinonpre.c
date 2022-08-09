@@ -81,9 +81,9 @@ int main()
             
         }
     }
-    printf("\nProcess No.\tPriority\tAT\tCPU Burst Time\tCT\tTAT\tWT\tRT\n");
+    printf("\nPid\tPri\tAT\tBurstTime\tCT\tTAT\tWT\tRT\n");
     for(int i=0;i<n;i++)
-     printf("%d\t%d\t%d\t%d\t\t%d\t%d\t%d\t%d\n",ps[i].pid,ps[i].priority,ps[i].at,ps[i].bt,ps[i].ct,ps[i].tat,ps[i].wt,ps[i].rt);
+     printf("%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\n",ps[i].pid,ps[i].priority,ps[i].at,ps[i].bt,ps[i].ct,ps[i].tat,ps[i].wt,ps[i].rt);
 
     printf("\n");    
     
