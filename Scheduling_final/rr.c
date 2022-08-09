@@ -7,7 +7,7 @@ struct process_struct
   int pid;
   int at;
   int bt;
-  int ct,wt,tat,rt,start_time;
+  int ct,wt,tat,start_time;
   int bt_remaining;
 }ps[100];
 
@@ -103,11 +103,9 @@ int main()
             ps[index].ct = current_time;
             ps[index].tat = ps[index].ct - ps[index].at;
             ps[index].wt = ps[index].tat - ps[index].bt;
-            ps[index].rt = ps[index].start_time - ps[index].at;
             printf("| P%d  %d",ps[index].pid,current_time);
             sum_tat += ps[index].tat;
             sum_wt += ps[index].wt;
-            sum_rt += ps[index].rt;    
         }
         //check which new Processes needs to be pushed to Ready Queue from Input list
         for(int i = 1; i < n; i++) 
@@ -145,15 +143,14 @@ int main()
     qsort((void *)ps,n, sizeof(struct process_struct),comparatorPID);
 
   //Output
-  printf("\nProcess No.\tAT\tCPU Burst Time\tStart Time\tCT\tTAT\tWT\tRT\n");
+  printf("\nProcess No.\tAT\tCPU Burst Time\tStart Time\tCT\tTAT\tWT\n");
   for(int i=0;i<n;i++)
   {
-    printf("%d\t\t%d\t%d\t\t%d\t\t%d\t%d\t%d\t%d\n",i,ps[i].at,ps[i].bt,ps[i].start_time,ps[i].ct,ps[i].tat,ps[i].wt,ps[i].rt);
+    printf("%d\t\t%d\t%d\t\t%d\t\t%d\t%d\t%d\t%d\n",i,ps[i].at,ps[i].bt,ps[i].start_time,ps[i].ct,ps[i].tat,ps[i].wt);
   }
 printf("\n");    
 
   printf("\nAverage Turn Around time= %.2f",(float)sum_tat/n);
   printf("\nAverage Waiting Time= %.2f",(float)sum_wt/n);
-  printf("\nAverage Response Time= %.2f",(float)sum_rt/n);   
 
 }

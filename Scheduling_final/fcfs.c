@@ -6,7 +6,7 @@ struct process
     int pid;
     int at; //Given Arrival time
     int bt; //Given Burst time
-    int ct,wt,tat,rt,start_time;
+    int ct,wt,tat,start_time;
 }ps[100];
 
 int max(int a,int b)
@@ -75,11 +75,9 @@ int main()
         ps[i].ct=ps[i].start_time+ps[i].bt;
         ps[i].tat=ps[i].ct-ps[i].at;
         ps[i].wt=ps[i].tat-ps[i].bt;
-        ps[i].rt=ps[i].wt;
         printf("| P%d  %d",ps[i].pid,ps[i].ct);
         sum_tat+=ps[i].tat;
         sum_wt+=ps[i].wt;
-        sum_rt+=ps[i].rt;
     }
     
     qsort((void *)ps,n,sizeof(struct process),comparatorPID);
@@ -94,6 +92,5 @@ int main()
     printf("\n");
     printf("\nAverage TAT=%f",sum_tat/n);
     printf("\nAverage WT=%f",sum_wt/n);
-    printf("\nAverage RT=%f",sum_rt/n);
 
 }

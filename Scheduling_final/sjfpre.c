@@ -6,7 +6,7 @@ struct process_struct
   int pid;
   int at;
   int bt;
-  int ct,wt,tat,rt,start_time;
+  int ct,wt,tat,start_time;
 }ps[100];
 
 int main()
@@ -84,12 +84,10 @@ int main()
                 ps[min_index].ct = current_time;
                 ps[min_index].tat = ps[min_index].ct - ps[min_index].at;
                 ps[min_index].wt= ps[min_index].tat - ps[min_index].bt;
-                ps[min_index].rt = ps[min_index].start_time - ps[min_index].at;
             
              
                 sum_tat +=ps[min_index].tat;
                 sum_wt += ps[min_index].wt;
-                sum_rt += ps[min_index].rt;
                 completed++;
                 is_completed[min_index]=1;
                 current_time=ps[min_index].ct;
@@ -97,15 +95,14 @@ int main()
         }
     }
     //Output
-    printf("\nProcess No.\tAT\tCPU Burst Time\tCT\tTAT\tWT\tRT\n");
+    printf("\nProcess No.\tAT\tCPU Burst Time\tCT\tTAT\tWT\n");
     for(int i=0;i<n;i++)
-     printf("%d\t\t%d\t%d\t\t%d\t%d\t%d\t%d\n",ps[i].pid,ps[i].at,ps[i].bt,ps[i].ct,ps[i].tat,ps[i].wt,ps[i].rt);
+     printf("%d\t\t%d\t%d\t\t%d\t%d\t%d\t%d\n",ps[i].pid,ps[i].at,ps[i].bt,ps[i].ct,ps[i].tat,ps[i].wt);
 
     printf("\n");    
     
 
     printf("\nAverage Turn Around time= %f ",(float)sum_tat/n);
     printf("\nAverage Waiting Time= %f ",(float)sum_wt/n);
-    printf("\nAverage Response Time= %f ",(float)sum_rt/n);
     
 }
