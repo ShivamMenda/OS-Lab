@@ -13,7 +13,7 @@ int main()
 {
     
     int n;
-    bool is_completed[100]={0},is_first_process=1;
+    int is_completed[100]={0},is_first_process=1;
     int bt_remaining[100];
     int current_time = 0;
     int completed = 0;
